@@ -6,7 +6,7 @@
 		<h1>Tiny App</h1>
 		<p>System status: ${message}</p>
 		<h1>JMX Bean values</h1>
-		<p>Age: ${bean.age}</p>
-		<p>Name: ${bean.name}</p>
+		<p>Age: ${person.age}</p>
+		<p>Name: ${person.name}</p>
 	</body>
 </html>
