@@ -8,14 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	
-	@Autowired AnnotationTestBean bean;
+	@Autowired Person person;
 	
 	@RequestMapping("/home")
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("message", "All systems optimal.");
 		mav.setViewName("home");
-		mav.addObject("bean", bean);
+		mav.addObject("person", person);
 		return mav;
 	}
 

@@ -14,7 +14,7 @@ import com.programeric.HomeController;
 @RunWith(MockitoJUnitRunner.class)
 public class HomeControllerTest {
 	
-	@Mock AnnotationTestBean bean;
+	@Mock Person person;
 	
 	@InjectMocks HomeController controller = new HomeController();
 
