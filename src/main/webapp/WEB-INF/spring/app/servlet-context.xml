@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<annotation-driven />
+	<context:component-scan base-package="com.programeric" />
+
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	<beans:bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+        <beans:property name="assembler" ref="assembler"/>
+        <beans:property name="namingStrategy" ref="namingStrategy"/>
+        <beans:property name="autodetect" value="true"/>
+    </beans:bean>
+
+    <beans:bean id="jmxAttributeSource"
+          class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource"/>
+
+    <!-- will create management interface using annotation metadata -->
+    <beans:bean id="assembler"
+          class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler">
+        <beans:property name="attributeSource" ref="jmxAttributeSource"/>
+    </beans:bean>
+
+    <!-- will pick up the ObjectName from the annotation -->
+    <beans:bean id="namingStrategy"
+          class="org.springframework.jmx.export.naming.MetadataNamingStrategy">
+        <beans:property name="attributeSource" ref="jmxAttributeSource"/>
+    </beans:bean>
+</beans:beans>
