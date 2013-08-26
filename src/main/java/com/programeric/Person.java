@@ -8,13 +8,13 @@ import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.stereotype.Component;
 
 @Component
-@ManagedResource(objectName="bean:name=testBean", description="My Managed Bean")
-public class AnnotationTestBean {
+@ManagedResource(objectName="bean:name=person", description="Managed Person Bean")
+public class Person {
 
 	private String name;
 	private int age;
 
-	@ManagedAttribute(description="The Age Attribute")
+	@ManagedAttribute(description="Age")
 	public int getAge() {
 		return age;
 	}
@@ -23,20 +23,20 @@ public class AnnotationTestBean {
 		this.age = age;
 	}
 
-	@ManagedAttribute(description="The Name Attribute", defaultValue="bar")
+	@ManagedAttribute(description="Name", defaultValue="George")
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	@ManagedAttribute(defaultValue="foo")
+	@ManagedAttribute(defaultValue="George")
 	public String getName() {
 		return name;
 	}
 
-	@ManagedOperation(description="Add two numbers")
+	@ManagedOperation(description="Simple addition of two integers")
 	@ManagedOperationParameters({
-		@ManagedOperationParameter(name = "x", description = "The first number"),
-		@ManagedOperationParameter(name = "y", description = "The second number")})
+		@ManagedOperationParameter(name = "x", description = "First integer"),
+		@ManagedOperationParameter(name = "y", description = "Second integer")})
 	public int add(int x, int y) {
 		return x + y;
 	}

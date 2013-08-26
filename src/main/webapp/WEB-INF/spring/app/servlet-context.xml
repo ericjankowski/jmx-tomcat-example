@@ -16,6 +16,9 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<!-- JMX beans -->
+	
 	<beans:bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
         <beans:property name="assembler" ref="assembler"/>
         <beans:property name="namingStrategy" ref="namingStrategy"/>
